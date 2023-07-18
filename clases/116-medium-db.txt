@@ -1,4 +1,4 @@
-//! Pueden cargar este script en https://dbdiagram.io/
+
 
 Table users {
   user_id integer [pk, increment] 
@@ -26,6 +26,9 @@ Table posts {
   published boolean
 
   created_by integer
+
+  // Se me olvido esta
+  created_at timestamp [default: 'now()']
 }
 
 Table claps {
@@ -46,7 +49,7 @@ Table claps {
 Table comments {
   comment_id integer [pk, increment]
   post_id integer
-  user_id increment
+  user_id integer
   content text
   created_at timestamp
   visible boolean
@@ -88,8 +91,6 @@ Ref: "posts"."post_id" < "claps"."post_id"
 
 Ref: "users"."user_id" < "claps"."user_id"
 
-Ref: "posts"."post_id" < "comments"."comment_id"
-
 Ref: "users"."user_id" < "comments"."user_id"
 
 Ref: "comments"."comment_id" < "comments"."comment_parent_id"
@@ -99,3 +100,5 @@ Ref: "users"."user_id" < "user_lists"."user_id"
 Ref: "user_lists"."user_list_id" < "user_list_entry"."user_list_id"
 
 Ref: "posts"."post_id" < "user_list_entry"."post_id"
+
+Ref: "posts"."post_id" < "comments"."post_id"
