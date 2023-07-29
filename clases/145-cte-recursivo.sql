@@ -16,3 +16,22 @@ WITH RECURSIVE countdown( val ) as (
 select * from countdown;
 
 
+
+
+select 5 as val;
+
+-- nombre de el CTE
+with RECURSIVE countdown( val ) as (
+	-- inicialización
+	UNION
+	
+	-- recursividad
+
+)
+-- select 
+
+
+
+
+
+
